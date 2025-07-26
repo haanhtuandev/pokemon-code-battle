@@ -1,0 +1,79 @@
+/* Reset scrolling and make full-screen black background */
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* No scroll */
+  color: #fefefe;
+  background-color: #fefefe;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Courier New', monospace;
+}
+
+/* Main game container */
+#game-container {
+  width: 60vh;
+  height: 85%;
+  background-color: #111;
+  border: 4px solid #222;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+#title {
+  text-align: center;
+  color: white;
+}
+.battle-area {
+  height: 30vh;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+
+}
+.battle-log {
+  color: white;
+  text-align: center;
+  border: 1px solid white;
+}
+.sprite-left img {
+  transform: scaleX(-1);
+}
+.sprite-left,
+.sprite-right {
+  flex-basis: 50%;
+}
+.hp-bar {
+  padding: 10px 20px;
+  background-color: green;
+  border: 1px solid black;
+}
+.main-area {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+.problem-section {
+  flex-basis: 50%;
+  margin: 1vw;
+}
+.code-section {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 50%;
+  margin: 1vw;
+}
+#editor {
+  width: 100%;
+  height: 70%;
+}
+#console {
+  width: 100%;
+  height: 30%;
+}
