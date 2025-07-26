@@ -1,24 +1,23 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+import { EditorState } from "@codemirror/state";
+import { EditorView, basicSetup } from "codemirror";
+import { python } from "@codemirror/lang-python";
+import { oneDark } from "@codemirror/theme-one-dark";
+import { keymap } from "@codemirror/view";
+import { indentWithTab } from "@codemirror/commands";
 
-setupCounter(document.querySelector('#counter'))
+
+editor = new EditorView({
+  state: EditorState.create({
+    doc: "\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+    extensions: [
+      basicSetup,
+      keymap.of([indentWithTab]),
+      python(),
+      oneDark
+    ]
+  }),
+  parent: document.getElementById("editor")
+});
+
+
