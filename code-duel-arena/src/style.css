@@ -49,10 +49,14 @@ body {
   flex-basis: 50%;
 }
 .hp-bar {
-  padding: 10px 20px;
+  width: 100%;
+  height: 20px;
   background-color: green;
-  border: 1px solid black;
+  border: 1px solid #333;
+  margin-top: 5px;
+  transition: width 0.5s;
 }
+
 .main-area {
   display: flex;
   justify-content: space-between;
@@ -61,7 +65,7 @@ body {
 }
 
 .problem-section {
-  flex-basis: 50%;
+  flex-basis: 40%;
   color: #fefefe;
   margin: 1vw;
 }
@@ -69,7 +73,7 @@ body {
   color: #fefefe;
   display: flex;
   flex-direction: column;
-  flex-basis: 50%;
+  flex-basis: 60%;
   margin: 1vw;
   min-height: 40vh; /* or adjust as needed */
   overflow: auto;
@@ -82,16 +86,13 @@ body {
 /* In style.css */
 #editor {
   width: 100%;
-  height: 300px; /* Fill the parent */
+  height: 100%;
   border: 1px solid #ccc;
   text-align: left;
   background-color: #1e1e1e; /* Match dark themes */
   font-size: 14px;
   overflow: auto;
 }
-
-
-#console {
-  width: 100%;
-  height: 30%;
+.buttons {
+  margin-top: 20px;
 }
