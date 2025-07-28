@@ -53,50 +53,37 @@ This project is built with a **FastAPI backend** and a **Vanilla JavaScript fron
 
 ---
 
-## Environment Variables
-
-In the `code-duel-backend/.env` file:
-
-```
-DEEPSEEK_API_KEY=your_deepseek_api_key
-```
-
-The backend reads this value using:
-
-```python
-import os
-
-DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
-```
-
----
-
 ## How to Run Locally
 
-### Backend
+This project is already deployed with a live backend API. If you'd like to run the frontend locally and connect to the hosted backend, follow the steps below.
 
-```bash
-cd code-duel-backend
-python -m venv venv
-source venv/bin/activate  # On Windows use: venv\Scripts\activate
-pip install -r requirements.txt
-uvicorn src.main:app --reload
-```
+### Prerequisites
 
-### Frontend
+- Node.js (v16 or later recommended)
+- npm
 
-```bash
-cd code-duel-arena
-npm install
-npm run dev
-```
+### Installation
 
-Ensure the frontend is pointing to the correct backend URL:
+1. **Clone the Repository**
 
-```javascript
-const API_BASE = "http://localhost:8000";
-```
+   ```bash
+   git clone https://github.com/haanhtuandev/pokemon-code-battle
+   cd pokemon-code-battle/code-duel-arena
+  <p align="center"><img width="645" height="126" alt="Screenshot 2025-07-29 at 00 40 11" src="https://github.com/user-attachments/assets/782b2e66-c853-4df5-9ab7-05a77620686a" /></p>
+  
 
+2. **Install Dependencies**
+    ```bash
+    npm install
+  <p align="center"><img width="369" height="118" alt="Screenshot 2025-07-29 at 00 40 42" src="https://github.com/user-attachments/assets/40ba54c5-835f-4f88-8af7-ff259d68c014" /></p>
+  
+  
+3. **Run The Development Server**
+    ```bash
+    
+    npm run dev
+
+  Then open http://localhost:[PORT] in your browser.
 ---
 
 ## Deployment
