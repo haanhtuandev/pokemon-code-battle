@@ -4,8 +4,10 @@
 
 This project is built with a **FastAPI backend** and a **Vanilla JavaScript frontend**. It uses the **DeepSeek API** to evaluate code correctness and generate dynamic, Pokémon-style battle commentary. Check it out right now: pokemon-code-battle.netlify.app
 
-<img width="897" height="1083" alt="Screenshot 2025-07-28 at 21 54 54" src="https://github.com/user-attachments/assets/8fa6d86d-fd54-4bd5-a21c-f9edaa721898" />
----
+<p align="center">
+  <img width=50% width="897" height="1083" alt="The UI of Pokemon Code Battle" src="https://github.com/user-attachments/assets/8fa6d86d-fd54-4bd5-a21c-f9edaa721898" />
+</p>
+
 
 ## Features
 
@@ -23,7 +25,7 @@ This project is built with a **FastAPI backend** and a **Vanilla JavaScript fron
 - **Frontend**: HTML, CSS, JavaScript, CodeMirror for the code editor
 - **Backend**: Python (FastAPI)
 - **AI Evaluation**: DeepSeek API, I initially tried to use Judge0 API to properly execute the code, but their free tier only allows 50 submissions/day. So I figure why not evaluate with a LLM? It definitely has downsides but it comes with an amazing perks - THE COMMENTARY BATTLE LOGS
-- **Deployment**: Render
+- **Deployment**: Render, Netlify
 
 ---
 
@@ -38,10 +40,11 @@ This project is built with a **FastAPI backend** and a **Vanilla JavaScript fron
 │   └── .env                     # Contains DEEPSEEK_API_KEY
 │
 ├── code-duel-arena/
-│   ├── index.html               # Main UI
-│   ├── style.css                # Styling
-│   ├── main.js                  # Game logic
-│   ├── public/                  # Static assets (sprites, sound)
+│   ├── index.html               # Main UI           
+│   ├── public/
+│   ├──src/
+│        ├── style.css           # Styling
+│        ├── main.js                 
 │   ├── dist/                    # Built frontend files
 │   └── package.json             # Vite project config
 │
