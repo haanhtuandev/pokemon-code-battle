@@ -20,7 +20,7 @@ This project is built with a **FastAPI backend** and a **Vanilla JavaScript fron
 
 ## Tech Stack
 
-- **Frontend**: HTML, CSS, JavaScript
+- **Frontend**: HTML, CSS, JavaScript, CodeMirror for the code editor
 - **Backend**: Python (FastAPI)
 - **AI Evaluation**: DeepSeek API, I initially tried to use Judge0 API to properly execute the code, but their free tier only allows 50 submissions/day. So I figure why not evaluate with a LLM? It definitely has downsides but it comes with an amazing perks - THE COMMENTARY BATTLE LOGS
 - **Deployment**: Render
