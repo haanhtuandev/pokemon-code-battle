@@ -30,13 +30,18 @@ class CodeRequest(BaseModel):
     problem_description: str
 
 
+game_state = {
+    "player_hp": 100,
+    "bot_hp": 100
+}
+
 
 @app.post("/commentary")
 def generate_commentary(request: CodeRequest):
     
     # Build DeepSeek prompt
     prompt = f"""
-    You are a code battle commentator in a Pokémon-style match.
+    You are a code battle commentator in a Pokémon-style match. Use Pokemon battle style battle narration, keep the respond short and succint
 
     {request.player_name} is using a move to solve this problem:
 
@@ -120,3 +125,84 @@ async def get_problem(move: str):
     if move not in PROBLEM_BANK:
         raise HTTPException(status_code=404, detail="Move not found")
     return random.choice(PROBLEM_BANK[move])
+
+class TurnRequest(CodeRequest):
+    pass  # Inherits from CodeRequest (already has all needed fields)
+
+@app.post("/turn")
+def player_turn(request: TurnRequest):
+    result = generate_commentary(request)
+
+    # Player attacks BOT
+    if result["is_correct"]:
+        game_state["bot_hp"] = max(0, game_state["bot_hp"] - result["damage"])
+        player_hit = True
+    else:
+        player_hit = False
+
+    # Now trigger BOT turn
+    move = random.choice(["Scratch", "Furry Swipes", "Bite", "Pay Day"])
+    move_damage = {
+        "Scratch": 10,
+        "Furry Swipes": 15,
+        "Bite": 20,
+        "Pay Day": 25
+    }
+
+    success = random.random() < 0.7  # 70% chance to hit
+    if success:
+        bot_damage = move_damage[move]
+        game_state["player_hp"] = max(0, game_state["player_hp"] - bot_damage)
+        bot_commentary = f"Meowth used {move}! It's super effective and dealt {bot_damage} damage!"
+        bot_hit = True
+    else:
+        bot_damage = 0
+        bot_commentary = f"Meowth used {move} but missed! You're lucky!"
+        bot_hit = False
+
+
+    return {
+        "player_commentary": result["commentary"],
+        "player_hit": player_hit,
+        "player_hp": game_state["player_hp"],
+        "bot_hp": game_state["bot_hp"],
+
+        "bot_commentary": bot_commentary,
+        "bot_hit": bot_hit,
+        "bot_move": move
+    }
+
+
+@app.get("/bot-turn")
+def bot_turn():
+    move = random.choice(["Scratch", "Furry Swipes", "Bite", "Pay Day"])
+    move_damage = {
+        "Scratch": 10,
+        "Furry Swipes": 15,
+        "Bite": 20,
+        "Pay Day": 25
+    }
+
+    success = random.random() < 0.7  # 70% chance to hit
+    if success:
+        damage = move_damage[move]
+        game_state["player_hp"] = max(0, game_state["player_hp"] - damage)
+        commentary = f"Meowth used {move}! It's super effective and dealt {damage} damage!"
+    else:
+        damage = 0
+        commentary = f"Meowth used {move} but missed! You're lucky!"
+
+    return {
+        "bot_commentary": commentary,
+        "bot_hit": success,
+        "damage": damage,
+        "bot_hp": game_state["bot_hp"],
+        "player_hp": game_state["player_hp"]
+    }
+
+
+@app.post("/reset")
+def reset_game():
+    game_state["player_hp"] = 100
+    game_state["bot_hp"] = 100
+    return {"message": "Game reset", "player_hp": 100, "bot_hp": 100}

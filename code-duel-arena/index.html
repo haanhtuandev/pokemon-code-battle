@@ -5,33 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Code Duel Arena</title>
   <link rel="stylesheet" href="src/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
 </head>
 <body>
   <div id="game-container">
-    <h1 id="title">Pokémon Coding Duel</h1>
 
-    <!-- Turn Indicator -->
-    <div id="turn-indicator" style="text-align: center; font-weight: bold; margin-bottom: 10px;">
-      Turn: <span id="current-turn">User</span>
-    </div>
+    <!-- Audio elements -->
+    <audio id="bgm" loop>
+      <source src="/code-duel-arena/public/pokemon-battle.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <audio id="damage-sfx">
+      <source src="/code-duel-arena/public/hit-super-effective.mp3" type="audio/wav">
+    </audio>
+    <audio id="win-sfx">
+      <source src="/code-duel-arena/public/06-caught-a-pokemon.mp3" type="audio/wav">
+    </audio>
+    <audio id="lose-sfx">
+      <source src="/code-duel-arena/public/bumpintowall_X5CNQPB.mp3" type="audio/wav">
+    </audio>
 
+    <!-- Music toggle button -->
+    <button id="music-toggle" class="music-btn">Toggle Music: ON</button>
     <!-- Battle Area -->
     <div class="battle-area">
       <!-- Player Sprite -->
       <div class="sprite-left">
-        <img width="20%" src="https://img.pokemondb.net/sprites/emerald/back-normal/pikachu.png" alt="Pikachu">
         <div class="hp-container">
-          <div class="hp-bar" id="hp-player1" style="width: 100%; background-color: green;"></div>
-          <p class="hp-text" id="hp-text-player1">100%</p>
+          <div class="hp-bar" id="hp-player" style="width: 100%; background-color: green;"></div>
+          <p class="hp-text" id="hp-text-player">100%</p>
         </div>
+        <img width=20% src="https://img.pokemondb.net/sprites/black-white/anim/back-normal/pikachu.gif" alt="Pikachu">
+        
       </div>
 
       <!-- Bot Sprite -->
       <div class="sprite-right">
-        <img width="20%" src="https://img.pokemondb.net/sprites/scarlet-violet/normal/emboar.png" alt="Emboar">
+        <img width=20% src="https://img.pokemondb.net/sprites/black-white/anim/normal/meowth.gif" alt="Meowth">
         <div class="hp-container">
-          <div class="hp-bar" id="hp-player2" style="width: 100%; background-color: green;"></div>
-          <p class="hp-text" id="hp-text-player2">100%</p>
+          <div class="hp-bar" id="hp-bot" style="width: 100%; background-color: green;"></div>
+          <p class="hp-text" id="hp-text-bot">100%</p>
         </div>
       </div>
     </div>
@@ -40,6 +54,9 @@
     <div class="battle-log" id="battle-log">
       <p>Welcome to the Pokémon Code Duel Arena!</p>
     </div>
+
+    <p id="timer">Time Left: 1:30</p>
+
 
     <!-- Main Area -->
     <div class="main-area">
@@ -69,9 +86,14 @@
       </div>
     </div>
 
-    <!-- Game Over Display -->
-    <div id="game-over" style="text-align: center; margin-top: 20px; font-size: 1.5em; font-weight: bold; color: red;"></div>
-  </div>
+    <div id="game-over-modal" class="modal hidden">
+      <div class="modal-content">
+        <h2 id="game-over-message"></h2>
+        <button id="restart-btn">Play Again</button>
+      </div>
+    </div>
+    
+
 
   <script type="module" src="src/main.js"></script>
 </body>
