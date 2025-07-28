@@ -2,7 +2,6 @@
 body {
   margin: 0;
   padding: 0;
-  overflow: hidden; /* No scroll */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,12 +54,12 @@ body {
   border: 2px solid #4a4a4a;
   background-color: #1c2526; /* DS dark teal */
   padding: 10px;
-  font-size: 0.9em;
+  font-size: 0.7em;
   text-shadow: 1px 1px #000;
   overflow-y: auto;
-  min-height: 10vh;
-  max-height: 15vh;
-  line-height: 1.6;
+  min-height: 7vh;
+  max-height: 10vh;
+  line-height: 1.4;
   white-space: pre-wrap; /* Allow wrapping and preserve line breaks */
   position: relative;
   word-wrap: break-word; /* Ensure long words break */
