@@ -2,7 +2,8 @@
 
 **Pokemon Code Battle** is a gamified coding battle platform inspired by the classic Pokémon battle interface. Players solve programming problems to launch attacks against an AI opponent (Meowth). Correct solutions deal damage; incorrect ones miss, allowing the bot to strike back.
 
-This project is built with a **FastAPI backend** and a **Vanilla JavaScript frontend**. It uses the **DeepSeek API** to evaluate code correctness and generate dynamic, Pokémon-style battle commentary.
+This project is built with a **FastAPI backend** and a **Vanilla JavaScript frontend**. It uses the **DeepSeek API** to evaluate code correctness and generate dynamic, Pokémon-style battle commentary. Check it out right now: pokemon-code-battle.netlify.app
+
 
 ---
 
