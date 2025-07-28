@@ -5,6 +5,9 @@ import { oneDark } from "@codemirror/theme-one-dark";
 import { keymap } from "@codemirror/view";
 import { indentWithTab } from "@codemirror/commands";
 
+
+
+const API_BASE = "https://pokemon-code-battle.onrender.com";
 let currentProblem = null;
 let selectedMove = null;
 // Audio elements
@@ -29,9 +32,10 @@ let editor = new EditorView({
 });
 
 
+
 async function resetGame() {
   try {
-    const response = await fetch("http://127.0.0.1:8000/reset", {
+    const response = await fetch(`${API_BASE}/reset`, {
       method: "POST",
       headers: { "Content-Type": "application/json" }
     });
@@ -138,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // Fetch and display a problem based on selected move
 async function loadProblemForMove(move) {
   try {
-    const response = await fetch(`http://127.0.0.1:8000/problem/${move}`);
+    const response = await fetch(`${API_BASE}/problem/${move}`);
     const problem = await response.json();
     currentProblem = problem;
 
@@ -187,7 +191,7 @@ document.getElementById("submit-code").addEventListener("click", async () => {
   };
 
   try {
-    const response = await fetch("http://127.0.0.1:8000/turn", {
+    const response = await fetch(`${API_BASE}/turn`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
@@ -335,7 +339,7 @@ function handleTimeout() {
   const battleLog = document.getElementById("battle-log");
   typewriter(battleLog, "Your move timed out!").then(() => {
     // Trigger BOT's turn
-    fetch("http://127.0.0.1:8000/bot-turn")
+    fetch(`${API_BASE}/bot-turn`)
       .then(res => res.json())
       .then(result => {
         typewriter(battleLog, result.bot_commentary).then(() => {
