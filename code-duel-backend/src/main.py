@@ -6,7 +6,7 @@ import json
 from dotenv import load_dotenv
 import re
 from fastapi.middleware.cors import CORSMiddleware
-from problem_bank import PROBLEM_BANK
+from src.problem_bank import PROBLEM_BANK
 import random
 
 load_dotenv()
