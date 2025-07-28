@@ -15,9 +15,9 @@ body {
 
 /* Main game container */
 #game-container {
-  width: 90vw; /* Slightly smaller for DS screen feel */
+  width: 58vw; /* Slightly smaller for DS screen feel */
   max-width: 800px; /* Cap for larger screens */
-  height: 95vh;
+  height: 90vh;
   background-color: #2e2e2e; /* DS dark gray */
   border: 6px solid #4a4a4a; /* Thicker, DS-like border */
   border-radius: 15px; /* Softer corners like DS */
@@ -39,7 +39,7 @@ body {
 
 /* Battle area */
 .battle-area {
-  height: 30vh;
+  height: 23vh;
   width: 100%;
   background-color: #000; /* Pure black for battle screen */
   display: flex;
@@ -190,7 +190,7 @@ body {
   flex-basis: 60%;
   margin: 1vw;
   padding: 10px;
-  min-height: 40vh;
+  max-height: 40vh;
   background-color: #1c2526; /* DS teal */
   border: 2px solid #4a4a4a;
   border-radius: 8px;
